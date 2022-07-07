@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MyAspNetCoreAppDemo</id>
+    <version>1.0.0</version>
+    <authors>MyAspNetCoreAppDemo</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0" />
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0">
+        <frameworkReference name="Microsoft.AspNetCore.App" />
+      </group>
+    </frameworkReferences>
+    <contentFiles>
+      <files include="any/net6.0/appsettings.Development.json" buildAction="Content" />
+      <files include="any/net6.0/appsettings.json" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="F:\New folder\.netcore-app\MyAspNetCoreAppDemo\bin\Debug\net6.0\MyAspNetCoreAppDemo.runtimeconfig.json" target="lib\net6.0\MyAspNetCoreAppDemo.runtimeconfig.json" />
+    <file src="F:\New folder\.netcore-app\MyAspNetCoreAppDemo\bin\Debug\net6.0\MyAspNetCoreAppDemo.dll" target="lib\net6.0\MyAspNetCoreAppDemo.dll" />
+    <file src="F:\New folder\.netcore-app\MyAspNetCoreAppDemo\appsettings.Development.json" target="content\appsettings.Development.json" />
+    <file src="F:\New folder\.netcore-app\MyAspNetCoreAppDemo\appsettings.Development.json" target="contentFiles\any\net6.0\appsettings.Development.json" />
+    <file src="F:\New folder\.netcore-app\MyAspNetCoreAppDemo\appsettings.json" target="content\appsettings.json" />
+    <file src="F:\New folder\.netcore-app\MyAspNetCoreAppDemo\appsettings.json" target="contentFiles\any\net6.0\appsettings.json" />
+  </files>
+</package>
