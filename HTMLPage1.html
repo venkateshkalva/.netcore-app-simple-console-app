@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body onload="loadDates()">
+    <div style="background-color: #71a1d1;text-align:center;height:40px;vertical-align:middle">
+        <h3>Time Entry - Pia</h3>
+    </div>
+    <div style="margin-top: 5px; background-color: #868a95;height:70px">
+        <div style="padding-top:10px">
+            <input type="button" value="Prev" onclick="loadNextandPrevious(-7)" />
+            <label id="lblDate"></label>
+            <input type="button" value="Next" onclick="loadNextandPrevious(7)" />
+            <input type="hidden" id="hdnStartDate"/>
+        </div>
+    </div>
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+    <script>
+        function loadDates() {
+            
+            var weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
+                day = new Date().getDay(),
+                dayOfWeek = weekday[day];
+            var objToday= new Date();
+            objToday.setDate(objToday.getDate() - (1* day));
+            objToday = new Date(objToday);
+            document.getElementById("hdnStartDate").innerText = objToday;
+            var dayOfMonth =  (objToday.getDate() < 10) ? '0' + objToday.getDate() : objToday.getDate();
+            var months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+                curMonth = months[objToday.getMonth()],
+                curYear = objToday.getFullYear();
+            var endDate = objToday.setDate(objToday.getDate() + 6);
+            var endDateofMonth = (new Date(endDate).getDate() < 10) ? '0' + new Date(endDate).getDate() : new Date(endDate).getDate();
+            var date = curMonth + " " + dayOfMonth + ", " + curYear + " - " + months[new Date(endDate).getMonth()] + " " + endDateofMonth + ", " + new Date(endDate).getFullYear() ;
+            document.getElementById("lblDate").innerText = date;
+            
+        }
+        function loadNextandPrevious(days) {
+            var objToday = new Date(document.getElementById("hdnStartDate").innerText);
+            objToday.setDate(objToday.getDate() + (1 * days));
+            objToday = new Date(objToday);
+            document.getElementById("hdnStartDate").innerText = objToday;
+            var dayOfMonth = (objToday.getDate() < 10) ? '0' + objToday.getDate() : objToday.getDate();
+            var months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+                curMonth = months[objToday.getMonth()],
+                curYear = objToday.getFullYear();
+            var endDate = objToday.setDate(objToday.getDate() + 6);
+            var endDateofMonth = (new Date(endDate).getDate() < 10) ? '0' + new Date(endDate).getDate() : new Date(endDate).getDate();
+            var date = curMonth + " " + dayOfMonth + ", " + curYear + " - " + months[new Date(endDate).getMonth()] + " " + endDateofMonth + ", " + new Date(endDate).getFullYear();
+            document.getElementById("lblDate").innerText = date;
+        }
+    </script>
+</body>
+
+</html>
