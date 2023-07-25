@@ -1,0 +1,45 @@
+@{
+    var sessionTimeoutMinutes = 30; // Set your desired session timeout value in minutes
+    var sessionTimeoutMilliseconds = sessionTimeoutMinutes * 60 * 1000; // Convert to milliseconds
+}
+
+<script>
+    // Function to redirect to the login page when the session has expired
+    function redirectToLoginPage() {
+        window.location.href = '/Login'; // Replace '/Login' with the URL of your login page
+    }
+
+    // Start a timer to check session status periodically
+    function startSessionTimer() {
+        setTimeout(redirectToLoginPage, @sessionTimeoutMilliseconds);
+    }
+
+    // Reset the timer on user activity
+    function resetSessionTimer() {
+        clearTimeout(sessionTimer);
+        startSessionTimer();
+    }
+
+    // Call startSessionTimer when the page loads
+    window.onload = function () {
+        startSessionTimer();
+    };
+
+    // Call resetSessionTimer on user activity, e.g., on mousemove or keypress
+    document.addEventListener('mousemove', resetSessionTimer);
+    document.addEventListener('keypress', resetSessionTimer);
+</script>
+
+
+public IActionResult MyView()
+{
+    // Check if the session has expired
+    if (HttpContext.Session.IsAvailable && HttpContext.Session.GetString("UserId") == null)
+    {
+        // Redirect to the login page or any other page when the session has expired
+        return RedirectToAction("Login", "Account"); // Replace "Login" and "Account" with your login page route and controller
+    }
+
+    // Continue with your regular logic to display the view
+    return View();
+}
